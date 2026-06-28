@@ -15,10 +15,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+# below line for good and perfect programing for add and better sort path from each path in each app
+# with this line you can write your purpose path from all app but you should make one urls.py file in you purpose app
+# and write this :
+#         from django.urls import path
+#
+#
+#
+#         from part_one.views import first_per, second_per, home_page
+#
+#         urlpatterns = [
+#             path(your purpose address ,your purpose view),
 
+#         ]
+
+from django.urls import path,include
+# i write below line of this code just for setting part from Test_Site
+from . import settings
+# i do not know why i import the static from the django.conf.urls.static but i import it from on my learning video
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("persons/",include("part_one.urls"))
-]
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+# up line just I can say it is for upload some file in my site anyd just it
