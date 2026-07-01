@@ -7,15 +7,16 @@ from django.db import models
 
 
 class Person(models.Model):
+
+    First_name=models.CharField(max_length=20)
+
+    Last_name=models.CharField(max_length=20)
+
     Gender=models.CharField(max_length=5)
 
     Height=models.CharField()
 
     Weight=models.CharField()
-
-    First_name=models.CharField(max_length=20)
-
-    Last_name=models.CharField(max_length=20)
 
     Age=models.IntegerField(blank=True,null=True)
     # about blank if blank is true you can write nothing in you field
@@ -44,6 +45,9 @@ class Personal_data(models.Model):
 
     Phone_password=models.CharField(blank=True,null=True)
 #     for now
+    photo_of_person=models.ImageField(upload_to="upload/photos",blank=True,null=True)
+    #     this method is for save and upload the photos
+
     person=models.ForeignKey(Person,on_delete=models.CASCADE)
 #     if on_delete is models.cascade so when you del the father model , after that child model del
 

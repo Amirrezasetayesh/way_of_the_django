@@ -9,7 +9,7 @@ def first_per(rq):
 
 # HttpResponse just return some html code to persons like below code
 def home_page(rq):
-    return render(rq,"for_home/first_index.html")
+    return render(rq,"home.html")
 
 # render is for your models and it can show some html pages to persons
 # render receives one rq (the rq of your def) and one location for you html file from the templates
