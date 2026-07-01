@@ -110,8 +110,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),]
 
-# media_root and media_url are for upload the file and picture in my site
 MEDIA_URL='media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 
