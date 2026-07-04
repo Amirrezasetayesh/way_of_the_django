@@ -1,5 +1,5 @@
 from django.shortcuts import render,HttpResponse
-
+from .models import Person,Personal_data
 # Create your views here.
 
 
@@ -9,9 +9,13 @@ def first_per(rq):
 
 # HttpResponse just return some html code to persons like below code
 def home_page(rq):
-    return render(rq,"home.html")
 
-# render is for your models and it can show some html pages to persons
+    # with below code you can give access to you database models
+    all_person=Person.objects.all()
+
+    return render(rq,"home.html",{'persons':all_person})
+
+# render is for your models, and it can show some html pages to persons
 # render receives one rq (the rq of your def) and one location for you html file from the templates
 
 def second_per(rq):
