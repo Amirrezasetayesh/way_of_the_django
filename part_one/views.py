@@ -11,10 +11,11 @@ def first_per(rq):
 def home_page(rq):
 
     # with below code you can give access to you database models
-    all_person=Person.objects.all()
-
-    return render(rq,"home.html",{'persons':all_person})
-
+    # all_person=Person.objects.all()
+    person_data=Personal_data.objects.all()
+    # i make the person data for my render method
+    return render(rq,"home.html",{'personal_datas':person_data})
+#     in html file you when you want to use your model you should use the key ==>>'anything' and not value
 # render is for your models, and it can show some html pages to persons
 # render receives one rq (the rq of your def) and one location for you html file from the templates
 

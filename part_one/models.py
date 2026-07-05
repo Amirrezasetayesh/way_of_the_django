@@ -51,7 +51,8 @@ class Personal_data(models.Model):
     person=models.ForeignKey(Person,on_delete=models.CASCADE,default=1)
 #     when you make the person then you can use all of the object of the person class like first_name or last_name
 #     if on_delete is models.cascade so when you del the father model , after that child model del
-
+#     for use the object of person for personal_data models you should write somthing like below code:
+#     name of your model (the model make with personal_data).person.name of your some object from person like First_name
     def __str__(self):
         return f"personal data of {self.person.First_name}"
 
