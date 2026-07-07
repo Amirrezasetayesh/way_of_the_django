@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base_page.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">onepiece database</h1>
+            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <center>
+            <div calss="col-4">
+              <p>The Grand Line is the world's most dangerous,<br>
+              mysterious sea route in One Piece.<br>
+              Running perpendicular to the Red Line,<br>
+              it divides the globe into the four<br>
+              cardinal oceans (North, East, West, and South Blue)<br>
+              and is walled off by the Calm Belts </p>
+             </div>
+        </center>
+    </div>
+</div>
+
+{% endblock %}

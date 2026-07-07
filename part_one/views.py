@@ -21,3 +21,8 @@ def home_page(rq):
 
 def second_per(rq):
     return HttpResponse("<h1> the second person is reza</h1>")
+
+
+
+def gran_line(rq):
+    return render(rq,"grand_line_page.html")
