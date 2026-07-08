@@ -17,21 +17,21 @@
   <div class="container px-4 px-lg-5 mt-5">
       <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
-          {% for person_data in personal_datas %}
+          {% for character_data in characters_data %}
 
           <div class="col mb-5">
               <div class="card h-100">
                   <!-- Product image-->
-                  <img class="card-img-top" src="{{ person_data.photo_of_person.url }}" alt="..." />
+                  <img class="card-img-top" src="{{ character_data.photo_of_the_character.url }}" alt="..." />
                   <!-- Product details-->
                   <div class="card-body p-4">
                       <div class="text-center">
 
-                          <h5 class="fw-bolder">{{ person_data.person.First_name }}</h5>
+                          <h5 class="fw-bolder">{{ character_data.character.First_name }}</h5>
 
 
 
-                          {{ person_data.person.Age | intcomma}}
+                          <h6 class="fw-bolder">B_H : ${{ character_data.character.Head_gift | intcomma}}</h6>
 
                       </div>
                   </div>
@@ -45,7 +45,7 @@
           {% endfor %}
                   <!-- Product actions-->
                   <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                      <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                      <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="http://127.0.0.1:8000/admin/part_one/character/add/">add new character</a></div>
                   </div>
               </div>
           </div>

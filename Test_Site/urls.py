@@ -37,6 +37,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("persons/",include("part_one.urls"))
+    path("onepiece/",include("part_one.urls"))
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 # up line just I can say it is for upload some file in my site anyd just it

@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Person,Personal_data
+from .models import Character,Personal_data
 
 # Register your models here.
 
-admin.site.register(Person)
+admin.site.register(Character)
 
 admin.site.register(Personal_data)
 
