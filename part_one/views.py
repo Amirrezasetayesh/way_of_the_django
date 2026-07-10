@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from .models import Character,Personal_data
-# Create your views here.
-
+from django.contrib.auth import logout,login,authenticate
+from django.contrib import redirects
 
 
 def first_per(rq):
@@ -31,3 +31,16 @@ def second_per(rq):
 
 def gran_line(rq):
     return render(rq,"grand_line_page.html")
+
+def log_in(rq):
+    pass
+
+
+
+
+def log_out(rq):
+    pass
+
+
+
+
