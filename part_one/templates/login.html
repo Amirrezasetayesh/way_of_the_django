@@ -16,8 +16,8 @@
     <div class="row">
         <center>
             <div calss="col-4">
-              <form>
-
+              <form method="POST" action="{% url 'login_user_site' %}">
+              {% csrf_token %}
               <div class="mb-3">
 
                 <input type="text" class="form-control" name="username" placeholder="Username">
