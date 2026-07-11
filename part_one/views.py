@@ -1,7 +1,7 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
 from .models import Character,Personal_data
 from django.contrib.auth import logout,login,authenticate
-from django.contrib import redirects
+from django.contrib import redirects,messages
 
 
 def first_per(rq):
@@ -32,15 +32,16 @@ def second_per(rq):
 def gran_line(rq):
     return render(rq,"grand_line_page.html")
 
-def log_in(rq):
-    pass
+def login_user(request):
+    return render(request,'login.html')
 
 
 
 
-def log_out(rq):
-    pass
-
+def logout_user(request):
+    logout(request)
+    messages.success(request,"logout was success full")
+    return redirect("main_page")
 
 
 
