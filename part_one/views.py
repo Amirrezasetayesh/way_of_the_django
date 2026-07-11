@@ -33,7 +33,22 @@ def gran_line(rq):
     return render(rq,"grand_line_page.html")
 
 def login_user(request):
-    return render(request,'login.html')
+    if request.method=="POST":
+        username_user=request.POST['username']
+        password_user=request.POST['password']
+
+
+        user=authenticate(request,username=username_user,password=password_user)
+        if user is not None:
+            login(request,user)
+            messages.success(request,"login was successful")
+            return redirect("main_page")
+        else:
+            messages.success(request,"login was not successful")
+            return redirect("login_user_site")
+    else:
+
+        return render(request,'login.html')
 
 
 
