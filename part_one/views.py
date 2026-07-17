@@ -2,8 +2,8 @@ from django.shortcuts import render,HttpResponse,redirect
 from .models import Character,Personal_data
 from django.contrib.auth import logout,login,authenticate
 from django.contrib import redirects,messages
-
-
+from django.contrib.auth.forms import UserCreationForm
+from .forms import SignupForm
 def first_per(rq):
     return HttpResponse("<h1>the first person is amir</h1>")
 
@@ -60,3 +60,22 @@ def logout_user(request):
 
 
 
+def signup_user(request):
+    form = SignupForm()
+    if request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data['username']
+            password1=form.cleaned_data['password1']
+            user=authenticate(request,username=username,password=password1)
+            login(request,user)
+            messages.success(request, "Your account was created successfully!")
+            return redirect("main_page")
+        else:
+            messages.error(request, "Please correct the errors below.")
+            return render(request, 'signup.html', {'form': form})
+
+    else:
+        form = SignupForm()
+        return render(request, 'signup.html', {'form': form})
