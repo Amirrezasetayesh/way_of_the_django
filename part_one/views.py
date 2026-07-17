@@ -71,6 +71,7 @@ def signup_user(request):
             username=form.cleaned_data['username']
             password = form.cleaned_data['password1']
             user = authenticate(request, username=username, password=password)
+
             login(request,user)
             messages.success(request,"signup was successful")
             return redirect("main_page")
