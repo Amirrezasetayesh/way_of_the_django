@@ -4,8 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class SignupForm(UserCreationForm):
+    # UserCreationForm is import to views.py
     email = forms.EmailField(
-        label="",
+        label="your email:",
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
             'placeholder': 'Email'
@@ -13,8 +14,8 @@ class SignupForm(UserCreationForm):
     )
 
     username = forms.CharField(
-        label="",
-        max_length=50,
+        label="you username:",
+        max_length=20,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Username'
@@ -22,20 +23,25 @@ class SignupForm(UserCreationForm):
     )
 
     password1 = forms.CharField(
-        label="",
-        widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Password'
+        label="you password:",
+        widget=forms.PasswordInput(attrs={'class':'form-control',
+                                          'name':'password',
+                                          'type':'password',
+                                          'placeholder':'password'
+
+        })
+    )
+    password2 = forms.CharField(
+        label="you password:",
+        widget=forms.PasswordInput(attrs={'class':'form-control',
+                                          'name':'password',
+                                          'type':'password',
+                                          'placeholder':'write again'
+
         })
     )
 
-    password2 = forms.CharField(
-        label="",
-        widget=forms.PasswordInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Confirm Password'
-        })
-    )
+
 
     class Meta:
         model = User
