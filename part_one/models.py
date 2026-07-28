@@ -10,9 +10,9 @@ class Character(models.Model):
 
     First_name=models.CharField(max_length=20)
 
-    Last_name=models.CharField(max_length=20)
+    Last_name=models.CharField(max_length=20,blank=True,null=True)
 
-    gender_list=[("m","male"),("f","female")]
+    gender_list=[("male","male"),("female","female")]
     Gender=models.CharField(choices=gender_list)
 
     Height=models.CharField()
@@ -29,6 +29,9 @@ class Character(models.Model):
     f_level_list=[("y","YOnko"),("SH","ShiJeBoKay"),("n_p","normal_pirate"),("A","AdMiArl"),("s_a","second_AdMiRal"),("n_m","normal_marian")]
     character_level=models.CharField(choices=f_level_list,default=f_level_list[-1])
 
+    simple_duc=models.TextField(blank=True,null=True)
+
+    full_body_photo=models.ImageField(upload_to="upload/full_body_photos",blank=True,null=True)
 
 
 
