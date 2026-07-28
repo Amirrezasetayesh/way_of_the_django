@@ -10,6 +10,7 @@ urlpatterns = [
     path("login/",views.login_user,name="login_user_site"),
     path("logout/",views.logout_user,name="logout_user_site"),
     path('signup/', views.signup_user, name='signup_user_site'),
+    path("information/<int:pk>",views.show_info,name="character_info")
 #     you chose one name for you url and then you can use this name in html cods like below code:
 #     {% url 'name of your Selected url ' %}
 ]

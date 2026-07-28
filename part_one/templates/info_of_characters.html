@@ -1,0 +1,98 @@
+{% extends "base_page.html" %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+<header class="bg-dark py-5">
+    <style>
+        body {
+            background-color: #d3d3d3;
+            color: #000000;
+        }
+    </style>
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+
+            <h1 class="display-4 fw-bolder">onepiece database</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Make yourself at home. </p>
+
+        </div>
+    </div>
+
+</header>
+
+
+<div class="container">
+    <div class="card mb-3">
+      <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ characters_data.character.full_body_photo.url }}" class="img-fluid rounded-start" alt="...">
+              <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">first name:</th>
+      <th scope="col">{{ characters_data.character.First_name }}</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+      <td>last name:</td>
+      <td>{{ characters_data.character.Last_name }}</td>
+
+    </tr>
+    <tr>
+
+      <td>gender:</td>
+      <td>{{ characters_data.character.Gender }}</td>
+
+    </tr>
+    <tr>
+
+      <td>height:</td>
+      <td>{{ characters_data.character.Height }}</td>
+
+    </tr>
+      <tr>
+
+      <td>weight:</td>
+      <td>{{ characters_data.character.Weight }}</td>
+
+    </tr>
+      <tr>
+
+      <td>age:</td>
+      <td>{{ characters_data.character.Age }}</td>
+
+    </tr>
+      <tr>
+
+      <td>home:</td>
+      <td>{{ characters_data.Home_Address }}</td>
+
+    </tr>
+      <tr>
+
+      <td>office:</td>
+      <td>{{ characters_data.Office_Address }}</td>
+
+    </tr>
+
+  </tbody>
+</table>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title">{{characters_data.character.Last_name}} {{ characters_data.character.First_name }}</h3>
+              <p class="card-text"></p>
+              <p class="card-text" style="font-size: 20px;"> about {{ characters_data.character.First_name }} : {{ characters_data.character.simple_duc }}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<br><br><br><br><br><br><br><br>
+
+{% endblock %}
