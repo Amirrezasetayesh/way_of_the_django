@@ -8,6 +8,8 @@ from .forms import SignupForm
 def first_per(rq):
     return HttpResponse("<h1>the first person is amir</h1>")
 
+
+
 # HttpResponse just return some html code to persons like below code
 def main_page(rq):
 
@@ -30,8 +32,13 @@ def second_per(rq):
 
 
 
+
+
 def gran_line(rq):
     return render(rq,"grand_line_page.html")
+
+
+
 
 def login_user(request):
     if request.method=="POST":
@@ -62,10 +69,14 @@ def login_user(request):
 
 
 
+
+
 def logout_user(request):
     logout(request)
     messages.success(request,"logout was success full")
     return redirect("main_page")
+
+
 
 
 
@@ -94,3 +105,10 @@ def signup_user(request):
     else:
         # if you do not give any data from POST method you can check again signup_user_site template
         return render(request,'signup.html',{'form':form})
+
+
+
+def show_info(request,pk):
+    characters_datas=Personal_data.objects.get(id=pk)
+    # i make the person data for my render method
+    return render(request,"info_of_characters.html",{'characters_data':characters_datas})
