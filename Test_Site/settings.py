@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','part_one','django.contrib.humanize'
+    'django.contrib.staticfiles','part_one','django.contrib.humanize','part_tow'
 ]
 # i add the humanize for my html codes
 MIDDLEWARE = [

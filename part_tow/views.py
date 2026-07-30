@@ -1,3 +1,26 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+
+
+def check_choices(request):
+    pass
+
+
+
+
+def select(request):
+    pass
+
+
+
+
+
+def not_select(request):
+    pass
+
+
+
+
+def select_again(request):
+    pass
