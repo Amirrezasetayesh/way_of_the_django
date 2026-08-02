@@ -52,9 +52,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'part_tow.context_processors.box'
+            #     up code ,we add one more template and the info of our address is name_of_app.context_processors.the_name_of_the_def_of(context_processors)
+
             ],
         },
     },
