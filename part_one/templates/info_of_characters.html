@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 {% load humanize %}
+
 <header class="bg-dark py-5">
     <style>
         body {
@@ -11,88 +12,102 @@
     </style>
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
-
             <h1 class="display-4 fw-bolder">onepiece database</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Make yourself at home. </p>
-
+            <p class="lead fw-normal text-white-50 mb-0">Make yourself at home.</p>
         </div>
     </div>
-
 </header>
-
 
 <div class="container">
     <div class="card mb-3">
-      <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{{ characters_data.character.full_body_photo.url }}" class="img-fluid rounded-start" alt="...">
-              <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">first name:</th>
-      <th scope="col">{{ characters_data.character.First_name }}</th>
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ characters_data.character.full_body_photo.url }}" class="img-fluid rounded-start" alt="...">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">first name:</th>
+                            <th scope="col">{{ characters_data.character.First_name }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>last name:</td>
+                            <td>{{ characters_data.character.Last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>gender:</td>
+                            <td>{{ characters_data.character.Gender }}</td>
+                        </tr>
+                        <tr>
+                            <td>height:</td>
+                            <td>{{ characters_data.character.Height }}</td>
+                        </tr>
+                        <tr>
+                            <td>weight:</td>
+                            <td>{{ characters_data.character.Weight }}</td>
+                        </tr>
+                        <tr>
+                            <td>age:</td>
+                            <td>{{ characters_data.character.Age }}</td>
+                        </tr>
+                        <tr>
+                            <td>home:</td>
+                            <td>{{ characters_data.Home_address }}</td>
+                        </tr>
+                        <tr>
+                            <td>office:</td>
+                            <td>{{ characters_data.Office_Address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body d-flex flex-column" style="height: 100%;">
+                    <h3 class="card-title">{{ characters_data.character.Last_name }} {{ characters_data.character.First_name }}</h3>
 
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
 
-      <td>last name:</td>
-      <td>{{ characters_data.character.Last_name }}</td>
 
-    </tr>
-    <tr>
+                    <p class="card-text" style="font-size: 20px; flex-grow: 1;">
+                        about {{ characters_data.character.First_name }} : {{ characters_data.character.simple_duc }}
+                    </p>
 
-      <td>gender:</td>
-      <td>{{ characters_data.character.Gender }}</td>
 
-    </tr>
-    <tr>
+                    <div class="text-center mt-3">
+                    <button class="btn btn-outline-dark" type="button" value="{{character_data.character.id}}" id="add_to_box">chose</button>
+                    </div>
 
-      <td>height:</td>
-      <td>{{ characters_data.character.Height }}</td>
 
-    </tr>
-      <tr>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'main_page' %}" class="btn btn-outline-dark">Home</a>
+                    </div>
 
-      <td>weight:</td>
-      <td>{{ characters_data.character.Weight }}</td>
-
-    </tr>
-      <tr>
-
-      <td>age:</td>
-      <td>{{ characters_data.character.Age }}</td>
-
-    </tr>
-      <tr>
-
-      <td>home:</td>
-      <td>{{ characters_data.Home_address }}</td>
-
-    </tr>
-      <tr>
-
-      <td>office:</td>
-      <td>{{ characters_data.Office_Address }}</td>
-
-    </tr>
-
-  </tbody>
-</table>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h3 class="card-title">{{characters_data.character.Last_name}} {{ characters_data.character.First_name }}</h3>
-              <p class="card-text"></p>
-              <p class="card-text" style="font-size: 20px;"> about {{ characters_data.character.First_name }} : {{ characters_data.character.simple_duc }}</p>
-
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 </div>
 
 <br><br><br><br><br><br><br><br>
+<script>
+    $(document).on('click', '#add_to_box',function(e){
+    e.preventDefault();
+    $.ajax({
+    type:'POST',
+    url:'{% url 'select_character' %}',
+    data:{
+    character_id:$('#add_to_box').val(),
+    csrfmiddlewaretoken:'{{ csrf_token }}',
+    action:'post'
+    },
+    success:function(json){
+        console.log(json)
+        },
+        error:function(xhr,errmsg,err){
+        }
+
+
+    })
+</script>
 
 {% endblock %}

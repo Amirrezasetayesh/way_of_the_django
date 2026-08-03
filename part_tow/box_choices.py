@@ -1,13 +1,25 @@
 class Box:
-    def __init__(self,request):
-        # request is the request of the user or customer of site
-        self.session= request.session
-        # now jst we should set one  session attribute for box with up code
-        box=self.session.get('session_key')
-        # with up code we check the session part of the box for know about the product or targets on box user
+    def __init__(self, request):
+        self.request = request
+        self.session = request.session
 
-        if 'session_key' not in request.session:
-            box=self.session['session_key'] = {}
-        self.box=box
+        # اگر session_key وجود ندارد، یک دیکشنری خالی بساز
+        if 'session_key' not in self.session:
+            self.session['session_key'] = {}
 
-# the role of this file is our main box for choice some character in our site
+        self.box = self.session['session_key']
+
+    def add_character(self, character_id):
+        """اضافه کردن کاراکتر به session"""
+        if 'characters' not in self.box:
+            self.box['characters'] = []
+
+        if int(character_id) not in self.box['characters']:
+            self.box['characters'].append(int(character_id))
+            self.session.modified = True
+            return True
+        return False
+
+    def get_characters(self):
+        """دریافت لیست کاراکترها"""
+        return self.box.get('characters', [])
