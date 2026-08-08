@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from .models import Character,Personal_data
 from django.contrib.auth import logout,login,authenticate
 from django.contrib.auth.models import User
@@ -88,7 +88,7 @@ def signup_user(request):
         # again you should give the introductions from POST method and check it
         form=SignupForm(request.POST)
         # you should pour the data from POST method to your own form
-        if form.is_valid:
+        if form.is_valid():
             # if all the parameters is true and the person add the information to form , you should chek the form values=== is_valid
             form.save()
             # and now you should save information for one user in site

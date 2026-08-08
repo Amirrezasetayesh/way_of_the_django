@@ -11,3 +11,11 @@ class Box:
         self.box=box
 
 # the role of this file is our main box for choice some character in our site
+    def add(self,character):
+        character_id=str(character.id)
+        if character_id in self.box:
+            pass
+        else:
+            self.box[character_id] = {'bounty_char':str(character.Height)}
+    def __len__(self):
+        return len(self.box)
