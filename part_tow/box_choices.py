@@ -16,6 +16,9 @@ class Box:
         if character_id in self.box:
             pass
         else:
-            self.session.modified = {'bounty_char': str(character.Height)}
+            self.box[character_id] = {
+                'bounty_char': str(character.Height)
+            }
+            self.session.modified = True
     def __len__(self):
         return len(self.box)
