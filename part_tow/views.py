@@ -22,7 +22,11 @@ def select(request):
         character=get_object_or_404(Character,id= character_id)
         person_box.add(character=character)
 
-        response=JsonResponse({"character_name":character.First_name})
+        # response=JsonResponse({"character_name":character.First_name})
+        gift_qty=person_box.__len__()
+        # up line just for calculate of the sum character chose
+        response = JsonResponse({"qty": gift_qty})
+        #
         return response
 
 
