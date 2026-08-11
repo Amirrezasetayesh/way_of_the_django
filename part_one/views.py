@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect,HttpResponse
 from .models import Character,Personal_data
 from django.contrib.auth import logout,login,authenticate
 from django.contrib.auth.models import User
+# we need User model for make one new use on site
 from django.contrib import messages
 from django import forms
 from .forms import SignupForm
@@ -16,8 +17,10 @@ def main_page(rq):
     # with below code you can give access to you database models
     # all_person=Person.objects.all()
     characters_datas=Personal_data.objects.all()
+    # up line is query set and the work of up code is give all data of (personal_data) from data base
     # i make the person data for my render method
     return render(rq,"home.html",{'characters_data':characters_datas})
+#     with up code part tow in dict we send our list of personal_data to home.html
 
 
 # home == main_mage
@@ -42,16 +45,20 @@ def gran_line(rq):
 
 def login_user(request):
     if request.method=="POST":
-        # we give the information from POST method pay attention we set the POST method in our html file
+        # up line is : if you get the post method from request of user and
+        #we give the information from POST method pay attention we set the POST method in our html file
         username_user=request.POST['username']
+        # and now we know our request method is post method do now we get username from post method of user
         # we give the username and password form the POST method datas
         password_user=request.POST['password']
+        # just like up code
 
 
         user=authenticate(request,username=username_user,password=password_user)
+        # and now we make one user ac with authenticate method and this method get one rq and username and password
         # authenticate method is for check the username and password of person for login
         if user is not None:
-            # if user does exist you should login the user in our site
+            # if user does exist you should sign the user in our site and make new user
             login(request,user)
             # login method is done the
             messages.success(request,"login was successful")
@@ -110,5 +117,7 @@ def signup_user(request):
 
 def show_info(request,pk):
     characters_datas=Personal_data.objects.get(id=pk)
-    # i make the person data for my render method
+    # up line instead of personal_data.object.all we write get because we need just pk(id) of character to chose and tag
+    # on site
     return render(request,"info_of_characters.html",{'characters_data':characters_datas})
+#     meaning of up line is put the character_datas to info_of_character.html and we make one key and value for this work

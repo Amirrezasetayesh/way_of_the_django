@@ -26,8 +26,11 @@ class Character(models.Model):
     f_or_uf=[("f","friendly"),("unf","unfriendly")]
     role_of_the_character=models.CharField(choices=f_or_uf)
 
-    f_level_list=[("y","YOnko"),("SH","ShiJeBoKay"),("n_p","normal_pirate"),("A","AdMiArl"),("s_a","second_AdMiRal"),("n_m","normal_marian")]
-    character_level=models.CharField(choices=f_level_list,default=f_level_list[-1])
+    f_level_list=[("y","YOnko"),("SH","ShiJeBoKay"),("n_p","normal_pirate"),
+                  ("A","AdMiArl"),("s_a","second_AdMiRal"),
+                  ("n_m","normal_marian")]
+    character_level=models.CharField(choices=f_level_list,
+                                     default=f_level_list[-1])
 
     simple_duc=models.TextField(blank=True,null=True)
 
