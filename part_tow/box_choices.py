@@ -12,8 +12,9 @@ class Box:
         if 'session_key' not in request.session:
             box=self.session['session_key'] = {}
         self.box=box
-
+#         3 up lines we remake the box with session_key object
 # the role of this file is our main box for choice some character in our site
+
     def add(self,character):
         character_id=str(character.id)
         if character_id in self.box:
