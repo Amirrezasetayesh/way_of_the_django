@@ -8,10 +8,33 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">onepiece database</h1>
-            <p class="lead fw-normal text-white-50 mb-0">you choices box is here</p>
+            <p class="lead fw-normal text-white-50 mb-0">your choices</p>
         </div>
     </div>
 </header>
 <br>
+<br>
+{% for characters_data in box_character %}
+    <div class="container">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <h3 class="card-title">{{ characters_data.Last_name }} {{ characters_data.First_name }}</h3>
+                    <img src="{{ characters_data.full_body_photo.url }}" class="img-fluid rounded-start" alt="...">
+                <div class="col-md-8">
+                    <div class="card-body d-flex flex-column" style="height: 100%;">
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<div class="text-center mt-3">
+    <a href="{% url 'main_page' %}" class="btn btn-outline-dark">Home</a>
+</div>
+<br>
 <br><br><br><br><br><br>
+
 {% endblock %}

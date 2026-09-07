@@ -61,6 +61,14 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="form-floating">
+                  <select class="form-select" id="character_qty" aria-label="Floating label select example">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                  <label for="floatingSelect">select number</label>
+                </div>
             </div>
             <div class="col-md-8">
                 <div class="card-body d-flex flex-column" style="height: 100%;">
@@ -97,6 +105,7 @@
             url: '{% url 'select_character' %}',
             data: {
                 character_id: character_id,
+                character_qty:$('character_qty option:selected').text(),
                 csrfmiddlewaretoken: '{{ csrf_token }}',
                 action: 'post'
             },
@@ -106,9 +115,16 @@
                 alert('Character added to box successfully!');
             },
             error: function(xhr, errmsg, err) {
-                console.log('Error:', xhr.status, xhr.responseText);
-                alert('Error: ' + errmsg);
-            }
+        console.log('Status:', xhr.status);
+        console.log('Response:', xhr.responseText);
+        console.log('Error:', err);
+
+    alert(
+        'Status: ' + xhr.status +
+        '\nError: ' + err +
+        '\n\nCheck Console (F12)'
+    );
+}
         });
     });
 </script>

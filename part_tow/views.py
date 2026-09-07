@@ -10,7 +10,10 @@ from django.http import JsonResponse
 
 
 def check_choices(request):
-    return render(request,"choices_box.html",{})
+    box=Box(request)
+    box_character=box.get_character()
+    quantities=box.get_quants()
+    return render(request,"choices_box.html",{"box_character":box_character,"quantity":quantities})
 
 
 
@@ -18,9 +21,14 @@ def check_choices(request):
 def select(request):
     person_box=Box(request)
     if request.POST.get('action')== 'post':
-        character_id=int(request.POST.get('character_id'))
+
+        character_id = int(request.POST.get('character_id'))
+
         character=get_object_or_404(Character,id= character_id)
-        person_box.add(character=character)
+
+        character_qty = int(request.POST.get('character_qty'))
+
+        person_box.add(character=character,quantity=character_qty)
 
         # response=JsonResponse({"character_name":character.First_name})
         gift_qty=person_box.__len__()
