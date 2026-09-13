@@ -34,11 +34,10 @@
 
                     <div class="card-body">
                         <p class="card-text">
-                            {% for key,value in quantities.items %}
-                                {% if key == character_data.id|slugify %}
-                                    {{ value }}
-
-                                {% endif%}
+                            {% for key, value in quantities.items %}
+                                {% if key == characters_data.id|slugify %}
+                                    number of choice: {{ value }}
+                                {% endif %}
                             {% endfor %}
 
                         </p>

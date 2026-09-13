@@ -13,7 +13,10 @@ def check_choices(request):
     box=Box(request)
     box_character=box.get_character()
     quantities=box.get_quants()
-    return render(request,"choices_box.html",{"box_character":box_character,"quantity":quantities})
+    return render(request,
+                  "choices_box.html",
+                  {"box_character":box_character,
+                   "quantities":quantities})
 
 
 
