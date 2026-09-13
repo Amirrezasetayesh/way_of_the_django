@@ -95,38 +95,34 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).on('click', '#add_to_box', function(e) {
-        e.preventDefault();
+   $(document).on('click', '#add_to_box', function(e) {
+    e.preventDefault();
 
-        var character_id = $(this).val();
+    var character_id = $(this).val();
+    var character_qty = $('#character_qty').val();
 
-        $.ajax({
-            type: 'POST',
-            url: '{% url 'select_character' %}',
-            data: {
-                character_id: character_id,
-                character_qty:$('character_qty option:selected').text(),
-                csrfmiddlewaretoken: '{{ csrf_token }}',
-                action: 'post'
-            },
-            success: function(json) {
-            //console.log(json);
-            document.getElementById('chose_quantity').textContent=json.qty
-                alert('Character added to box successfully!');
-            },
-            error: function(xhr, errmsg, err) {
-        console.log('Status:', xhr.status);
-        console.log('Response:', xhr.responseText);
-        console.log('Error:', err);
+    $.ajax({
+        type: 'POST',
+        url: '{% url 'select_character' %}',
+        data: {
+            character_id: character_id,
+            character_qty: character_qty,
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+        },
 
-    alert(
-        'Status: ' + xhr.status +
-        '\nError: ' + err +
-        '\n\nCheck Console (F12)'
-    );
-}
-        });
+        success: function(json) {
+            document.getElementById('chose_quantity').textContent = json.qty;
+            alert('Character added to box successfully!');
+        },
+
+        error: function(xhr, errmsg, err) {
+            console.log('Status:', xhr.status);
+            console.log('Response:', xhr.responseText);
+            console.log('Error:', err);
+        }
     });
+});
 </script>
 
 {% endblock %}

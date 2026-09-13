@@ -14,23 +14,43 @@
 </header>
 <br>
 <br>
-{% for characters_data in box_character %}
-    <div class="container">
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <h3 class="card-title">{{ characters_data.Last_name }} {{ characters_data.First_name }}</h3>
-                    <img src="{{ characters_data.full_body_photo.url }}" class="img-fluid rounded-start" alt="...">
-                <div class="col-md-8">
-                    <div class="card-body d-flex flex-column" style="height: 100%;">
+<div class="container">
+    <div class="row g-4">
 
+        {% for characters_data in box_character %}
+            <div class="col-md-4">
+
+                <div class="card h-100">
+
+                    <h3 class="card-title text-center mt-2">
+                        {{ characters_data.Last_name }} {{ characters_data.First_name }}
+                    </h3>
+
+                    {% if characters_data.full_body_photo %}
+                        <img src="{{ characters_data.full_body_photo.url }}"
+                             class="card-img-top"
+                             alt="{{ characters_data.First_name }}">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <p class="card-text">
+                            {% for key,value in quantities.items %}
+                                {% if key == character_data.id|slugify %}
+                                    {{ value }}
+
+                                {% endif%}
+                            {% endfor %}
+
+                        </p>
                     </div>
-                    </div>
+
                 </div>
+
             </div>
-        </div>
+        {% endfor %}
+
     </div>
-{% endfor %}
+</div>
 <div class="text-center mt-3">
     <a href="{% url 'main_page' %}" class="btn btn-outline-dark">Home</a>
 </div>
